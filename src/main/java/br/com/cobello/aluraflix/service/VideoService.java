@@ -76,9 +76,27 @@ public class VideoService {
 		{
 			throw new VideoNaoEncontradoException("Video Não encontrado");
 		}
-
-
-
+	}
+	
+	/**
+	 * Deleta um Video
+	 * 
+	 * @throws VideoNaoEncontradoException 
+	 */
+	public Video deletar(long id) throws VideoNaoEncontradoException {
+		
+		final Optional<Video> db = videoRepository.findById(id);
+		
+		if (db.isPresent())
+		{
+			videoRepository.delete(db.get());
+			
+			return db.get();
+		}
+		else
+		{
+			throw new VideoNaoEncontradoException("Video Não encontrado");
+		}
 	}
 
 }

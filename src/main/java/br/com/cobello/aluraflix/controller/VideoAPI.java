@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -73,6 +74,22 @@ public class VideoAPI extends BaseAPI {
 
 		return service.atualizar(id, request);
 	}
+	
+	/**
+	 * Metodo responsavel pelo tratamento das requisições do tipo
+	 * {@link DeleteMapping} para deletar um Video
+	 * 
+	 * @param request
+	 * @throws VideoNaoEncontradoException 
+	 */
+	@DeleteMapping("/videos/{id}")
+	@ResponseStatus(HttpStatus.OK)
+	public Video deletar(@PathVariable long id) throws VideoNaoEncontradoException {
+		
+		log.info("Deletar um Video [{}]", id);
+
+		return service.deletar(id);
+	}
 
 	/**
 	 * Metodo responsavel pelo tratamento das requisições do tipo
@@ -118,56 +135,5 @@ public class VideoAPI extends BaseAPI {
 		}
 	}
 
-//	/**
-//	 * Metodo responsavel pelo tratamento das requisi��es do tipo
-//	 * {@link PostMapping} realizar uma transferencia
-//	 * 
-//	 * @param conta
-//	 * @param request
-//	 * @throws Exception
-//	 * @throws SaldoInsuficienteException
-//	 * @throws VideoNaoEncontradoException
-//	 * @throws ClienteException
-//	 */
-//	@PostMapping("/cliente/{conta}/transferir")
-//	@ResponseStatus(HttpStatus.CREATED)
-//	@ResponseBody
-//	public void transferir(@PathVariable @Size(min = 1, max = 36) String conta,
-//			@Valid @RequestBody ClienteTransferenciaRequest request) throws Exception {
-//		
-//		log.info("Realizar Transferencia da Conta [{}] [{}]", conta, request);
-//
-//		try {
-//			service.transferir(conta, request);
-//		} 
-//		catch (ClienteException | VideoNaoEncontradoException | SaldoInsuficienteException e) {
-//			log.error(e.getMessage());
-//			throw e;
-//		}
-//	}
-//
-//	/**
-//	 * Metodo responsavel pelo tratamento das requisi��es do tipo
-//	 * {@link GetMapping} para buscar as movimenta��es de um cliente pela sua
-//	 * conta
-//	 * 
-//	 * @param conta
-//	 * @return {@link List} de {@link Movimentacao}
-//	 * @throws MovimentacaoNaoEncontradaException
-//	 */
-//	@GetMapping("/cliente/{conta}/movimentacao")
-//	@ResponseStatus(HttpStatus.OK)
-//	@ResponseBody
-//	public List<Movimentacao> movimentacao(@PathVariable @Size(min = 1, max = 36) String conta) throws MovimentacaoNaoEncontradaException {
-//		
-//		log.info("Consultar Movimentacaoes da Conta [{}]", conta);
-//
-//		try {
-//			return service.movimentacoes(conta);
-//		} 
-//		catch (MovimentacaoNaoEncontradaException e) {
-//			log.error(e.getMessage());
-//			throw e;
-//		}
-//	}
+
 }
