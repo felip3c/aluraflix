@@ -1,6 +1,7 @@
 package br.com.cobello.aluraflix.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import lombok.AllArgsConstructor;
@@ -18,7 +19,7 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Video 
 {
-	@Id
+	@Id @GeneratedValue
 	private long id;
 	private String titulo;
 	private String descricao;

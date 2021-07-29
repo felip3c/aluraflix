@@ -1,6 +1,6 @@
 package br.com.cobello.aluraflix.pojo;
 
-import com.sun.istack.NotNull;
+import javax.validation.constraints.NotBlank;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,9 +16,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class VideoRequest 
 {
-	private long id;
+	@NotBlank(message = "titulo é obrigatorio")
 	private String titulo;
+	@NotBlank(message = "descricao é obrigatorio")
 	private String descricao;
-	@NotNull
+	@NotBlank(message = "url é obrigatorio")
 	private String url;
 }

@@ -2,17 +2,23 @@ package br.com.cobello.aluraflix.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.cobello.aluraflix.entity.Video;
 import br.com.cobello.aluraflix.exception.VideoNaoEncontradoException;
+import br.com.cobello.aluraflix.pojo.VideoRequest;
 import br.com.cobello.aluraflix.service.VideoService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -36,28 +42,38 @@ public class VideoAPI extends BaseAPI {
 	@Autowired
 	VideoService service;
 
-//	/**
-//	 * Metodo responsavel pelo tratamento das requisi��es do tipo
-//	 * {@link PostMapping} para inserir um novo Cliente
-//	 * 
-//	 * @param request
-//	 * @throws ClienteException
-//	 */
-//	@PostMapping("/cliente")
-//	@ResponseStatus(HttpStatus.CREATED)
-//	public Cliente cadastrar(@Valid @RequestBody ClienteRequest request) throws ClienteException {
-//		
-//		log.info("Cadastrar um Cliente [{}]", request);
-//
-//		try {
-//			return service.registrar(request);
-//		} 
-//		catch (ClienteException e) {
-//			log.error(e.getMessage());
-//			throw e;
-//		}
-//	}
-//
+	/**
+	 * Metodo responsavel pelo tratamento das requisições do tipo
+	 * {@link PostMapping} para inserir um novo Video
+	 * 
+	 * @param request
+	 * @throws ClienteException
+	 */
+	@PostMapping("/videos")
+	@ResponseStatus(HttpStatus.CREATED)
+	public Video cadastrar(@Valid @RequestBody VideoRequest request) {
+		
+		log.info("Cadastrar um Video [{}]", request);
+
+		return service.registrar(request);
+	}
+	
+	/**
+	 * Metodo responsavel pelo tratamento das requisições do tipo
+	 * {@link PutMapping} para atualizar um novo Video
+	 * 
+	 * @param request
+	 * @throws VideoNaoEncontradoException 
+	 */
+	@PutMapping("/videos/{id}")
+	@ResponseStatus(HttpStatus.OK)
+	public Video atualizar(@PathVariable long id, @Valid @RequestBody VideoRequest request) throws VideoNaoEncontradoException {
+		
+		log.info("Atualizar um Video [{}]", request);
+
+		return service.atualizar(id, request);
+	}
+
 	/**
 	 * Metodo responsavel pelo tratamento das requisições do tipo
 	 * {@link GetMapping} para buscar um vide pelo seu id
