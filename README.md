@@ -29,7 +29,7 @@ Executar os comandos na raiz do projeto
 
 ## Como testar (Postman)
 
-Importar a [Collection](https://github.com/fcobello/aluraflix/blob/master/AluraFlix.postman_collection) disponivel na raiz do projeto no [Postman](https://postman.com)
+Importar a [Collection](https://github.com/fcobello/aluraflix/blob/master/AluraFlix.postman_collection.json) disponivel na raiz do projeto no [Postman](https://postman.com)
 
 ## Como acessar o banco de dados
 Para esse projeto foi utilizado o banco H2 em memoria, o banco é recriado a cada start da aplicação
