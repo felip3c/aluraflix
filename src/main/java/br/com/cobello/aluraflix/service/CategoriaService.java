@@ -50,7 +50,7 @@ public class CategoriaService {
 	}
 
 	/**
-	 * Registra um Video
+	 * Registra um Categoria
 	 * 
 	 * @param request
 	 */
@@ -65,7 +65,7 @@ public class CategoriaService {
 	}
 	
 	/**
-	 * Registra um Video
+	 * Atualiza um Categoria
 	 * 
 	 * @param request
 	 * @throws NaoEncontradoException 
@@ -87,7 +87,7 @@ public class CategoriaService {
 	}
 	
 	/**
-	 * Deleta um Video
+	 * Deleta um Categoria
 	 * 
 	 * @throws NaoEncontradoException 
 	 */

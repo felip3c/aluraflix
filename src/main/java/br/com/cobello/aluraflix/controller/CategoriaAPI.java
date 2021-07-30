@@ -25,13 +25,14 @@ import br.com.cobello.aluraflix.service.CategoriaService;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * API de Operaões de Videos
+ * API de Operaões de Categorias
  * 
  * <p>
  * Trata os endpoints
  * <p>
  * <b>/categoria</b><br>
  * <b>/categoria/{id}</b><br>
+ * <b>/categoria/{id}/videos</b><br>
  * 
  * @author Felipe
  *
@@ -46,10 +47,9 @@ public class CategoriaAPI extends BaseAPI {
 
 	/**
 	 * Metodo responsavel pelo tratamento das requisições do tipo
-	 * {@link PostMapping} para inserir um novo Video
+	 * {@link PostMapping} para inserir um novo Categoria
 	 * 
 	 * @param request
-	 * @throws ClienteException
 	 */
 	@PostMapping("/categorias")
 	@ResponseStatus(HttpStatus.CREATED)
@@ -62,7 +62,7 @@ public class CategoriaAPI extends BaseAPI {
 	
 	/**
 	 * Metodo responsavel pelo tratamento das requisições do tipo
-	 * {@link PutMapping} para atualizar um novo Video
+	 * {@link PutMapping} para atualizar um novo Categoria
 	 * 
 	 * @param request
 	 * @throws NaoEncontradoException 
@@ -78,7 +78,7 @@ public class CategoriaAPI extends BaseAPI {
 	
 	/**
 	 * Metodo responsavel pelo tratamento das requisições do tipo
-	 * {@link DeleteMapping} para deletar um Video
+	 * {@link DeleteMapping} para deletar um Categoria
 	 * 
 	 * @param request
 	 * @throws NaoEncontradoException 
@@ -94,13 +94,11 @@ public class CategoriaAPI extends BaseAPI {
 
 	/**
 	 * Metodo responsavel pelo tratamento das requisições do tipo
-	 * {@link GetMapping} para buscar um vide pelo seu id
+	 * {@link GetMapping} para buscar um Categoria pelo seu id
 	 * 
-	 * @param conta
-	 * @return {@link Video}
+	 * @param id
+	 * @return {@link Categoria}
 	 * @throws Exception
-	 * @throws ClienteException
-	 * @throws NaoEncontradoException
 	 */
 	@GetMapping("/categorias/{id}")
 	@ResponseStatus(HttpStatus.OK)
@@ -114,13 +112,11 @@ public class CategoriaAPI extends BaseAPI {
 	
 	/**
 	 * Metodo responsavel pelo tratamento das requisições do tipo
-	 * {@link GetMapping} para buscar um vide pelo seu id
+	 * {@link GetMapping} para buscar os videos pelo seu id Categoria
 	 * 
 	 * @param conta
 	 * @return {@link Video}
 	 * @throws Exception
-	 * @throws ClienteException
-	 * @throws NaoEncontradoException
 	 */
 	@GetMapping("/categorias/{id}/videos")
 	@ResponseStatus(HttpStatus.OK)
@@ -134,10 +130,10 @@ public class CategoriaAPI extends BaseAPI {
 
 	/**
 	 * Metodo responsavel pelo tratamento das requisições do tipo
-	 * {@link GetMapping} para buscar todos os videos
+	 * {@link GetMapping} para buscar todos os Categoria
 	 * 
 	 * @param id
-	 * @return {@link List} de {@link Video}
+	 * @return {@link List} de {@link Categoria}
 	 * @throws NaoEncontradoException
 	 */
 	@GetMapping("/categorias")

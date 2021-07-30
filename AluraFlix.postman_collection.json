@@ -26,13 +26,33 @@
 			"response": []
 		},
 		{
+			"name": "http://localhost:8080/categorias/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/categorias/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"categorias",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "http://localhost:8080/videos/",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"titulo\":\"Azure\",\r\n    \"descricao\":\"Azure FullStack\",\r\n    \"url\":\"https://alura.com.br/azure-fullstack\"\r\n}",
+					"raw": "{\r\n    \"titulo\":\"Azure 2\",\r\n    \"descricao\":\"Azure FullStack\",\r\n    \"url\":\"https://alura.com.br/azure-fullstack\",\r\n    \"categoria\":1\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -48,6 +68,35 @@
 					"port": "8080",
 					"path": [
 						"videos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/categorias/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titulo\":\"Livre\",\r\n    \"cor\":\"Green\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/categorias/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"categorias",
 						""
 					]
 				}
@@ -84,6 +133,35 @@
 			"response": []
 		},
 		{
+			"name": "http://localhost:8080/categorias/3",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titulo\":\"Cloud\",\r\n    \"cor\":\"blue\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/categorias/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"categorias",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "http://localhost:8080/videos/1",
 			"request": {
 				"method": "DELETE",
@@ -98,6 +176,47 @@
 					"path": [
 						"videos",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/categorias/3",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/categorias/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"categorias",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/categorias/1/videos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/categorias/1/videos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"categorias",
+						"1",
+						"videos"
 					]
 				}
 			},
