@@ -6,9 +6,11 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.cobello.aluraflix.entity.Categoria;
 import br.com.cobello.aluraflix.entity.Video;
-import br.com.cobello.aluraflix.exception.VideoNaoEncontradoException;
+import br.com.cobello.aluraflix.exception.NaoEncontradoException;
 import br.com.cobello.aluraflix.pojo.VideoRequest;
+import br.com.cobello.aluraflix.repository.CategoriaRepository;
 import br.com.cobello.aluraflix.repository.VideoRepository;
 
 @Service
@@ -16,24 +18,27 @@ public class VideoService {
 
 	@Autowired
 	private VideoRepository videoRepository;
+	
+	@Autowired
+	private CategoriaRepository categoriaRepository;
 
-	public List<Video> buscar() throws VideoNaoEncontradoException {
+	public List<Video> buscar() throws NaoEncontradoException {
 		List<Video> videos = videoRepository.findAll();
 
 		if (videos.isEmpty()) {
-			throw new VideoNaoEncontradoException("Sem Videos");
+			throw new NaoEncontradoException("Sem Videos");
 		}
 
 		return videos;
 	}
 
-	public Video buscar(long id) throws VideoNaoEncontradoException {
+	public Video buscar(long id) throws NaoEncontradoException {
 		final Optional<Video> video;
 
 		video = videoRepository.findById(id);
 
 		if (!video.isPresent()) {
-			throw new VideoNaoEncontradoException("Video [" + id + "] não encontrado");
+			throw new NaoEncontradoException("Video [" + id + "] não encontrado");
 		}
 
 		return video.get();
@@ -45,13 +50,19 @@ public class VideoService {
 	 * @param request
 	 */
 	public Video registrar(VideoRequest request) {
-		final Video db = new Video();
+		final Video video = new Video();
+		final Optional<Categoria> categoria = categoriaRepository.findById(request.getCategoria());
 
-		db.setDescricao(request.getDescricao());
-		db.setTitulo(request.getTitulo());
-		db.setUrl(request.getUrl());
+		video.setDescricao(request.getDescricao());
+		video.setTitulo(request.getTitulo());
+		video.setUrl(request.getUrl());
+		
+		if (categoria.isPresent())
+		{
+			video.setCategoria(categoria.get());
+		}
 
-		return videoRepository.save(db);
+		return videoRepository.save(video);
 
 	}
 	
@@ -59,9 +70,9 @@ public class VideoService {
 	 * Registra um Video
 	 * 
 	 * @param request
-	 * @throws VideoNaoEncontradoException 
+	 * @throws NaoEncontradoException 
 	 */
-	public Video atualizar(long id, VideoRequest request) throws VideoNaoEncontradoException {
+	public Video atualizar(long id, VideoRequest request) throws NaoEncontradoException {
 		
 		final Optional<Video> db = videoRepository.findById(id);
 		
@@ -74,16 +85,16 @@ public class VideoService {
 		}
 		else
 		{
-			throw new VideoNaoEncontradoException("Video Não encontrado");
+			throw new NaoEncontradoException("Video Não encontrado");
 		}
 	}
 	
 	/**
 	 * Deleta um Video
 	 * 
-	 * @throws VideoNaoEncontradoException 
+	 * @throws NaoEncontradoException 
 	 */
-	public Video deletar(long id) throws VideoNaoEncontradoException {
+	public Video deletar(long id) throws NaoEncontradoException {
 		
 		final Optional<Video> db = videoRepository.findById(id);
 		
@@ -95,7 +106,7 @@ public class VideoService {
 		}
 		else
 		{
-			throw new VideoNaoEncontradoException("Video Não encontrado");
+			throw new NaoEncontradoException("Video Não encontrado");
 		}
 	}
 

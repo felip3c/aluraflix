@@ -17,10 +17,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.cobello.aluraflix.entity.Categoria;
 import br.com.cobello.aluraflix.entity.Video;
 import br.com.cobello.aluraflix.exception.NaoEncontradoException;
-import br.com.cobello.aluraflix.pojo.VideoRequest;
-import br.com.cobello.aluraflix.service.VideoService;
+import br.com.cobello.aluraflix.pojo.CategoriaRequest;
+import br.com.cobello.aluraflix.service.CategoriaService;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -29,8 +30,8 @@ import lombok.extern.slf4j.Slf4j;
  * <p>
  * Trata os endpoints
  * <p>
- * <b>/videos</b><br>
- * <b>/videos/{id}</b><br>
+ * <b>/categoria</b><br>
+ * <b>/categoria/{id}</b><br>
  * 
  * @author Felipe
  *
@@ -38,10 +39,10 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @Slf4j
 @Validated
-public class VideoAPI extends BaseAPI {
+public class CategoriaAPI extends BaseAPI {
 	
 	@Autowired
-	VideoService service;
+	CategoriaService service;
 
 	/**
 	 * Metodo responsavel pelo tratamento das requisições do tipo
@@ -50,9 +51,9 @@ public class VideoAPI extends BaseAPI {
 	 * @param request
 	 * @throws ClienteException
 	 */
-	@PostMapping("/videos")
+	@PostMapping("/categorias")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Video cadastrar(@Valid @RequestBody VideoRequest request) {
+	public Categoria cadastrar(@Valid @RequestBody CategoriaRequest request) {
 		
 		log.info("Cadastrar um Video [{}]", request);
 
@@ -66,9 +67,9 @@ public class VideoAPI extends BaseAPI {
 	 * @param request
 	 * @throws NaoEncontradoException 
 	 */
-	@PutMapping("/videos/{id}")
+	@PutMapping("/categorias/{id}")
 	@ResponseStatus(HttpStatus.OK)
-	public Video atualizar(@PathVariable long id, @Valid @RequestBody VideoRequest request) throws NaoEncontradoException {
+	public Categoria atualizar(@PathVariable long id, @Valid @RequestBody CategoriaRequest request) throws NaoEncontradoException {
 		
 		log.info("Atualizar um Video [{}]", request);
 
@@ -82,9 +83,9 @@ public class VideoAPI extends BaseAPI {
 	 * @param request
 	 * @throws NaoEncontradoException 
 	 */
-	@DeleteMapping("/videos/{id}")
+	@DeleteMapping("/categorias/{id}")
 	@ResponseStatus(HttpStatus.OK)
-	public Video deletar(@PathVariable long id) throws NaoEncontradoException {
+	public Categoria deletar(@PathVariable long id) throws NaoEncontradoException {
 		
 		log.info("Deletar um Video [{}]", id);
 
@@ -101,10 +102,10 @@ public class VideoAPI extends BaseAPI {
 	 * @throws ClienteException
 	 * @throws NaoEncontradoException
 	 */
-	@GetMapping("/videos/{id}")
+	@GetMapping("/categorias/{id}")
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	public Video buscar(@PathVariable long id) throws Exception {
+	public Categoria buscar(@PathVariable long id) throws Exception {
 		
 		log.info("Consulta de Video por ID [{}]", id);
 
@@ -119,10 +120,10 @@ public class VideoAPI extends BaseAPI {
 	 * @return {@link List} de {@link Video}
 	 * @throws NaoEncontradoException
 	 */
-	@GetMapping("/videos")
+	@GetMapping("/categorias")
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	public List<Video> buscar() throws NaoEncontradoException {
+	public List<Categoria> buscar() throws NaoEncontradoException {
 		
 		log.info("Consulta de Videos");
 

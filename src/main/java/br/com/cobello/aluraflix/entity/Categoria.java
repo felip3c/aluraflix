@@ -3,15 +3,13 @@ package br.com.cobello.aluraflix.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Entidade que representa os Videos
+ * Entidade que representa as Categorias
  * @author Felipe
  *
  */
@@ -19,14 +17,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Video 
+public class Categoria 
 {
 	@Id @GeneratedValue
 	private long id;
 	private String titulo;
-	private String descricao;
-	private String url;
-	@ManyToOne
-	@JoinColumn(name="categoriaId", referencedColumnName = "id", insertable = false, updatable = false)
-	private Categoria categoria;
+	private String cor;
 }

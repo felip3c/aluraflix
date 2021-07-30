@@ -7,20 +7,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Pojo que representa os Videos
+ * Pojo que representa as Categorias
  * @author Felipe
  *
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class VideoRequest 
+public class CategoriaRequest 
 {
 	@NotBlank(message = "titulo é obrigatorio")
 	private String titulo;
-	@NotBlank(message = "descricao é obrigatorio")
-	private String descricao;
-	@NotBlank(message = "url é obrigatorio")
-	private String url;
-	private long categoria;
+	@NotBlank(message = "cor é obrigatorio")
+	private String cor;
 }
