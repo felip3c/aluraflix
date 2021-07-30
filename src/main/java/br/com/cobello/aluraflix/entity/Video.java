@@ -6,6 +6,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,6 +22,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@JsonInclude(Include.NON_NULL)
 public class Video 
 {
 	@Id @GeneratedValue
@@ -26,6 +30,7 @@ public class Video
 	private String titulo;
 	private String descricao;
 	private String url;
+	private long categoriaId;
 	@ManyToOne
 	@JoinColumn(name="categoriaId", referencedColumnName = "id", insertable = false, updatable = false)
 	private Categoria categoria;

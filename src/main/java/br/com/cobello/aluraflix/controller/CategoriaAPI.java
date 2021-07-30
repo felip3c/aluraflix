@@ -111,6 +111,26 @@ public class CategoriaAPI extends BaseAPI {
 
 		return service.buscar(id);
 	}
+	
+	/**
+	 * Metodo responsavel pelo tratamento das requisições do tipo
+	 * {@link GetMapping} para buscar um vide pelo seu id
+	 * 
+	 * @param conta
+	 * @return {@link Video}
+	 * @throws Exception
+	 * @throws ClienteException
+	 * @throws NaoEncontradoException
+	 */
+	@GetMapping("/categorias/{id}/videos")
+	@ResponseStatus(HttpStatus.OK)
+	@ResponseBody
+	public List<Video> buscarVideos(@PathVariable long id) throws Exception {
+		
+		log.info("Consulta de Video por ID de categoria [{}]", id);
+
+		return service.buscarVideos(id);
+	}
 
 	/**
 	 * Metodo responsavel pelo tratamento das requisições do tipo

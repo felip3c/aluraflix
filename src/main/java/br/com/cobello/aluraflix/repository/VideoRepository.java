@@ -16,4 +16,6 @@ import br.com.cobello.aluraflix.entity.Video;
 public interface VideoRepository extends CrudRepository<Video, Long> {
 	
 	List<Video> findAll();
+	
+	List<Video> findByCategoriaId(long categoriaId);
 }

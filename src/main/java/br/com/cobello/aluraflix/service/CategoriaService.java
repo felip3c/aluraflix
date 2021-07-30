@@ -7,15 +7,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.cobello.aluraflix.entity.Categoria;
+import br.com.cobello.aluraflix.entity.Video;
 import br.com.cobello.aluraflix.exception.NaoEncontradoException;
 import br.com.cobello.aluraflix.pojo.CategoriaRequest;
 import br.com.cobello.aluraflix.repository.CategoriaRepository;
+import br.com.cobello.aluraflix.repository.VideoRepository;
 
 @Service
 public class CategoriaService {
 
 	@Autowired
 	private CategoriaRepository categoriaRepository;
+	
+	@Autowired
+	private VideoRepository videoRepository;
 
 	public List<Categoria> buscar() throws NaoEncontradoException {
 		List<Categoria> categorias = categoriaRepository.findAll();
@@ -37,6 +42,11 @@ public class CategoriaService {
 		}
 
 		return categoria.get();
+	}
+	
+	public List<Video> buscarVideos(long id) throws NaoEncontradoException {
+
+		return videoRepository.findByCategoriaId(id);
 	}
 
 	/**

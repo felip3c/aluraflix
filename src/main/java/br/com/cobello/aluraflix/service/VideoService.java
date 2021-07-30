@@ -59,7 +59,11 @@ public class VideoService {
 		
 		if (categoria.isPresent())
 		{
-			video.setCategoria(categoria.get());
+			video.setCategoriaId(request.getCategoria());
+		}
+		else
+		{
+			video.setCategoriaId(1);
 		}
 
 		return videoRepository.save(video);
