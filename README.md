@@ -31,7 +31,22 @@ Executar os comandos na raiz do projeto
 
 Importar a [Collection](https://github.com/fcobello/aluraflix/blob/master/AluraFlix.postman_collection.json) disponivel na raiz do projeto no [Postman](https://postman.com)
 
+### Autenticação HTTP Basic
+
+Para autenticar nos endpoints "privados" usar o padrão [HTTP Basic](https://learning.postman.com/docs/sending-requests/authorization/#basic-auth) com os dados
+
+>Usuario: user
+
+>Senha: password
+
 ## Como acessar o banco de dados
 Para esse projeto foi utilizado o banco H2 em memoria, o banco é recriado a cada start da aplicação
 
 É possivel acessar o banco através de uma WebConsole (http://localhost:8080/h2-console), os dados de usuario, senha e url podem ser obtidos no arquivo application.properties
+
+## Deploy
+Aplicação publicada no serviço de Cloud Heroku, usando a integração do serviço com o GitHub, onde novos commits acionam a esteira de DevOps para um novo deploy.
+
+Resultado pode ser acessado abaixo
+
+https://fcobello-aluraflix.herokuapp.com/

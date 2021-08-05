@@ -2,7 +2,7 @@ package br.com.cobello.aluraflix.repository;
 
 import java.util.List;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import br.com.cobello.aluraflix.entity.Video;
@@ -13,9 +13,11 @@ import br.com.cobello.aluraflix.entity.Video;
  *
  */
 @Repository
-public interface VideoRepository extends CrudRepository<Video, Long> {
+public interface VideoRepository extends JpaRepository<Video, Long> {
 	
 	List<Video> findAll();
 	
 	List<Video> findByCategoriaId(long categoriaId);
+	
+	List<Video> findByTituloContaining(String titulo);
 }

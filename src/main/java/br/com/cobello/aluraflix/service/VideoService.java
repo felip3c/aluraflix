@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.com.cobello.aluraflix.entity.Categoria;
@@ -22,8 +23,18 @@ public class VideoService {
 	@Autowired
 	private CategoriaRepository categoriaRepository;
 
-	public List<Video> buscar() throws NaoEncontradoException {
-		List<Video> videos = videoRepository.findAll();
+	public List<Video> buscar(String search, Pageable pageable) throws NaoEncontradoException {
+		
+		final List<Video> videos;
+		
+		if (search != null)
+		{
+			videos = videoRepository.findByTituloContaining(search);
+		}
+		else
+		{
+			videos = videoRepository.findAll(pageable).getContent();
+		}
 
 		if (videos.isEmpty()) {
 			throw new NaoEncontradoException("Sem Videos");
