@@ -3,8 +3,8 @@
 ![license](https://img.shields.io/github/license/fcobello/aluraflix)
 
 # aluraflix
-
 Aplicação construida para Challenge do [Alura Backend](https://www.alura.com.br/challenges/back-end/)
+<img src="https://user-images.githubusercontent.com/79534537/130516084-f199b740-4daf-4d67-a995-9bfdb2bd4560.png" alt="aluraflix" width="320"/>
 
 ## Pré requisitos
 Java 11 (https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
